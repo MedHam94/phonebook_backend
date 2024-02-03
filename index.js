@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 5001
 app.use(cors())
 
 app.use(express.json())
+app.use(express.static('dist'))
 let persons = [
     {
         "id": 1,
@@ -33,8 +34,8 @@ const generateID = () => {
     return Math.floor(Math.random() * 100)
 }
 
-const findDuplicate = (persons, person) => {
-    return persons.some(el => el === person)
+const findDuplicate = (persons) => {
+    return persons.some(el => el === persons)
 }
 
 app.get('/', (req, res) => {
@@ -67,7 +68,7 @@ app.post('/api/persons', (req, res) => {
     }
     if (!person.name || !person.number) {
         res.status(404).json('The name or number is missing')
-    } else if (findDuplicate()) {
+    } else if (findDuplicate(persons)) {
         res.status(404).json({ error: 'already existing number' })
     } else {
         console.log(person);
