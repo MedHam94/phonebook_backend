@@ -86,5 +86,5 @@ app.delete('/api/persons/:id', (req, res) => {
 )
 
 app.listen(PORT, () => {
-    console.log('express connected');
+    console.log(`express running on ${PORT}`);
 })
