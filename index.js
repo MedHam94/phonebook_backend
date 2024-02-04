@@ -30,9 +30,9 @@ let persons = [
     }
 ]
 
-const generateID = () => {
-    return Math.floor(Math.random() * 100)
-}
+// const generateID = () => {
+//     return Math.floor(Math.random() * 100)
+// }
 
 const findDuplicate = (persons) => {
     return persons.some(el => el === persons)
@@ -64,7 +64,7 @@ app.post('/api/persons', (req, res) => {
     const person = {
         name: req.body.name,
         number: req.body.number,
-        id: generateID()
+        // id: generateID()
     }
     if (!person.name || !person.number) {
         res.status(404).json('The name or number is missing')
